@@ -6,7 +6,7 @@ Paste it in the editor and wait for the preview to start interacting with it.
 */
 
 
-pragma solidity 0.5.12;
+///pragma solidity 0.5.7;
 
 
 contract PropertyContract
