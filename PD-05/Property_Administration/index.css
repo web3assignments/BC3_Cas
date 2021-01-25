@@ -1,0 +1,7 @@
+.jumbotron {
+    
+    background-image: url("image.jpg");
+    background-size: cover;
+    height: 500px;
+    color:rgb(0, 0, 0);
+  }
