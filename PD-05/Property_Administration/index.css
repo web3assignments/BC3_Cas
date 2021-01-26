@@ -3,5 +3,12 @@
     background-image: url("image.jpg");
     background-size: cover;
     height: 500px;
-    color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
+  }
+
+  #function_container{
+
+    display: flex;
+    margin-bottom: 100px;
+
   }

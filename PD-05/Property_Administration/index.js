@@ -192,3 +192,17 @@ async function asyncloaded() {
     contract = new web3.eth.Contract(abi, contract_address);
 }
 window.addEventListener('load', asyncloaded);     
+
+function registerProperty() {
+
+    var address = document.getElementById("address").value;
+    var price = document.getElementById("price").value;
+    console.log(address,price);
+    contract.methods.registerProperty(address,price).send({from: accounts[0]}).then(x => console.log(x));
+}
+
+function transferProperty(){
+
+
+}
+
