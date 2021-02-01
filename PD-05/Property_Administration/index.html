@@ -21,16 +21,20 @@
     <div class="container" id="function_container">
         <div class="col-md-4">
             <h2>Register Property</h1>
-                <label for="address">Address: </label><input id="address" type="text" /><br /><br />
-                <label for="price">Price: </label><input id="price" type="number" /><br /><br />
+                <label for="address">Address: </label><input id="address_register" type="text" /><br /><br />
+                <label for="price">Price: </label><input id="price_register" type="number" /><br /><br />
                 <button id="submit" onclick="registerProperty()">Register</button>
                 <p id="registerResult"></p>
         </div>
         <div class="col-md-4">
             <h2>Get Property</h1>
-                <label for="address_wallet">Wallet Address: </label><input id="address" type="text" placeholder="Werkt nog niet" /><br /><br />
-                <label for="id_house">Property ID: </label><input id="id" type="number" placeholder="Werkt nog niet"/><br /><br />
+                <label for="address_wallet">Wallet Address: </label><input id="address_property" type="text" placeholder="Werkt nog niet" /><br /><br />
+                <label for="id_house">Property ID: </label><input id="id"_house type="number" placeholder="Werkt nog niet"/><br /><br />
                 <button id="submit" onclick="getProperty()">Get</button>
+                <p id="locationResult"></p>
+                <p id="costResult"></p>
+                <p id="Result"></p>
+                <p id="registerResult"></p>
         </div>
         <div class="col-md-4">
             <h2>Transfer Property</h1>

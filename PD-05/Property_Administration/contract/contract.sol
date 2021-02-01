@@ -27,15 +27,16 @@ contract PropertyContract
   
   //The events of a couple functions
   event transferPropertySucces(bool result); 
-  event registerPropertySucces(bool result);
+  event registerPropertySucces(bool result, uint ID);
    
   //mapping of the address to the array of properties
   mapping (address => Property[]) public propertiesMapping;
 
   //This function register a property for the sender.
   //Could add some authirization, who could register properties.
-  function registerProperty(string memory _location, uint _cost) public returns (bool)
+  function registerProperty(string memory _location, uint _cost) public
     {
+        require(propertiesMapping[msg.sender].length < 10);
         totalPropertyCounter = totalPropertyCounter + 1;
         Property memory myproperty = Property(
            {
@@ -47,14 +48,13 @@ contract PropertyContract
         propertiesMapping[msg.sender].push(myproperty);
         ownerList.push(msg.sender);
         bool result = true;
-        emit registerPropertySucces(result);
-        return result;
+        emit registerPropertySucces(result, myproperty.ID);
   
 	}
   
   //Transfer property. Push property to buyer , pop properrty from old owner.
   //Does the old owner transfers to the new owner?
-  function transferProperty(address _Buyer, uint _ID) public returns (bool)
+  function transferProperty(address _Buyer, uint _ID) public
     {
         require(_Buyer != msg.sender);
         bool result = false;
@@ -83,7 +83,6 @@ contract PropertyContract
             }
         }
         emit transferPropertySucces(result);                
-        return result;
     }
   
   //Returns property of certain index

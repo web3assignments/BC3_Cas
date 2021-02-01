@@ -1,178 +1,236 @@
 // Let's use the contract we deployed on the Rinkeby test network!
-// Contract Address: https://rinkeby.etherscan.io/address/0x648a8087721bb3f68d2e9217a55850bfacece905
+// Contract Address: https://rinkeby.etherscan.io/address/0xaA3E46dea51173C403A175f52Ea3cfbC3D300004
 
-const contract_address = '0x3Ac71BdF9B36DBBed29eB63E7EB22CB4401f6c1A';
+const contract_address = '0xaA3E46dea51173C403A175f52Ea3cfbC3D300004';
 
 // Compile your contract in remix, then go to the .JSON artifact and ABI will be there.
 const abi = [
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "",
-                "type": "address"
-            },
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "propertiesMapping",
-        "outputs": [
-            {
-                "name": "ownerAddress",
-                "type": "address"
-            },
-            {
-                "name": "ID",
-                "type": "uint256"
-            },
-            {
-                "name": "location",
-                "type": "string"
-            },
-            {
-                "name": "cost",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "__propertyHolder",
-                "type": "address"
-            }
-        ],
-        "name": "getNoOfProperties",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "totalPropertyCounter",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_location",
-                "type": "string"
-            },
-            {
-                "name": "_cost",
-                "type": "uint256"
-            }
-        ],
-        "name": "registerProperty",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_propertyHolder",
-                "type": "address"
-            },
-            {
-                "name": "_index",
-                "type": "uint256"
-            }
-        ],
-        "name": "getProperty",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            },
-            {
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "name": "",
-                "type": "address"
-            },
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_Buyer",
-                "type": "address"
-            },
-            {
-                "name": "_ID",
-                "type": "uint256"
-            }
-        ],
-        "name": "transferProperty",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "result",
-                "type": "bool"
-            }
-        ],
-        "name": "transferPropertySucces",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "name": "result",
-                "type": "bool"
-            }
-        ],
-        "name": "registerPropertySucces",
-        "type": "event"
-    }
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_location",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_cost",
+				"type": "uint256"
+			}
+		],
+		"name": "registerProperty",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "result",
+				"type": "bool"
+			}
+		],
+		"name": "registerPropertySucces",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_Buyer",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ID",
+				"type": "uint256"
+			}
+		],
+		"name": "transferProperty",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "result",
+				"type": "bool"
+			}
+		],
+		"name": "transferPropertySucces",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "__propertyHolder",
+				"type": "address"
+			}
+		],
+		"name": "getNoOfProperties",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getProperties",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "ownerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "ID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct PropertyContract.Property[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_propertyHolder",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getProperty",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "ownerList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "propertiesMapping",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "ownerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cost",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalPropertyCounter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
 ];
 
 var contract;
@@ -193,19 +251,27 @@ async function asyncloaded() {
 }
 window.addEventListener('load', asyncloaded);     
 
-function registerProperty() {
+async function registerProperty() {
 
-    var address = document.getElementById("address").value;
-    var price = document.getElementById("price").value;
+    var address = document.getElementById("address_register").value;
+    var price = document.getElementById("price_register").value;
     console.log(address,price);
-    var result = contract.methods.registerProperty(address,price).send({from: accounts[0]}).then(x => console.log(x));
-    var registered=web3.utils.hexToNumber((result.events[0].raw.data));
+    var result = await contract.methods.registerProperty(address,price).send({from: accounts[0]});
+    console.log(result);
+    
+    var registered = result.events.registerPropertySucces.returnValues[0];
     document.getElementById('registerResult').innerText = " The property is registered : "+registered;
     
 }
 
-function transferProperty(){
+async function transferProperty(){
+    
 
+}
 
+async function getProperty() {
+    
+    var address = document.getElementById("address_register").value;
+    var result = await contract.methods.getProperty().call();
 }
 
