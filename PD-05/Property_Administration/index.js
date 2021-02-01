@@ -198,7 +198,10 @@ function registerProperty() {
     var address = document.getElementById("address").value;
     var price = document.getElementById("price").value;
     console.log(address,price);
-    contract.methods.registerProperty(address,price).send({from: accounts[0]}).then(x => console.log(x));
+    var result = contract.methods.registerProperty(address,price).send({from: accounts[0]}).then(x => console.log(x));
+    var registered=web3.utils.hexToNumber((result.events[0].raw.data));
+    document.getElementById('registerResult').innerText = " The property is registered : "+registered;
+    
 }
 
 function transferProperty(){

@@ -5,9 +5,7 @@ Paste it in the editor and wait for the preview to start interacting with it.
 **To interact with the contract you will need a Metamask extension.
 */
 
-//pragma solidity 0.5.7;
-pragma experimental ABIEncoderV2;
-
+pragma solidity 0.8.1;
 
 
 contract PropertyContract
@@ -23,7 +21,9 @@ contract PropertyContract
     }
   // Total count of properties determines property ID, could use random instead.
   uint public totalPropertyCounter;
-
+  
+  // quicklist for look up owner of Property by ID, ID = index
+  address[] public ownerList;
   
   //The events of a couple functions
   event transferPropertySucces(bool result); 
@@ -34,7 +34,7 @@ contract PropertyContract
 
   //This function register a property for the sender.
   //Could add some authirization, who could register properties.
-  function registerProperty(string memory _location, uint _cost) public
+  function registerProperty(string memory _location, uint _cost) public returns (bool)
     {
         totalPropertyCounter = totalPropertyCounter + 1;
         Property memory myproperty = Property(
@@ -45,8 +45,10 @@ contract PropertyContract
                 ID: totalPropertyCounter
             });
         propertiesMapping[msg.sender].push(myproperty);
+        ownerList.push(msg.sender);
         bool result = true;
         emit registerPropertySucces(result);
+        return result;
   
 	}
   
@@ -67,12 +69,16 @@ contract PropertyContract
                     cost: propertiesMapping[msg.sender][i].cost,
                     ID: _ID
                   });
+                //push property to mapping and remove from other mapping
                 propertiesMapping[_Buyer].push(myproperty);   
                 Property memory temp = propertiesMapping[msg.sender][i];
                 uint arraySize = propertiesMapping[msg.sender].length;
                 propertiesMapping[msg.sender][i] = propertiesMapping[msg.sender][arraySize-1];
                 propertiesMapping[msg.sender][arraySize-1] = temp;
                 propertiesMapping[msg.sender].pop();
+                
+                //change owner in quicklist
+                ownerList[myproperty.ID]=_Buyer;
                 result = true;                
             }
         }
