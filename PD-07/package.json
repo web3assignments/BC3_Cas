@@ -1,0 +1,15 @@
+{
+  "name": "PD-07",
+  "version": "1.0.0",
+  "description": "Put the results here",
+  "main": "gen_mnemonic.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
