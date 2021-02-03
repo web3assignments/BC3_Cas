@@ -5,11 +5,20 @@ Paste it in the editor and wait for the preview to start interacting with it.
 **To interact with the contract you will need a Metamask extension.
 */
 
-//pragma solidity 0.8.1;
+pragma solidity ^0.6.0;
+pragma experimental ABIEncoderV2;
+import "github.com/oraclize/ethereum-api/provableAPI_0.6.sol";
 
 
-contract PropertyContract
+contract PropertyContract is usingProvable
 {
+    
+  //Provable variables
+  string  public addressAPICheck;
+  uint256 public priceOfUrl;
+  constructor() public payable {}
+  
+ 
   //Property class
   struct Property 
     {
@@ -17,8 +26,9 @@ contract PropertyContract
         uint ID;   
         string location;
         uint cost;
-           
     }
+
+  
   // Total count of properties determines property ID, could use random instead.
   uint public totalPropertyCounter;
   
@@ -31,6 +41,27 @@ contract PropertyContract
    
   //mapping of the address to the array of properties
   mapping (address => Property[]) public propertiesMapping;
+  
+  //Functions for provable API call
+  
+   function __callback(bytes32 /* myid prevent warning*/ , string memory result ) override public {
+       if (msg.sender != provable_cbAddress()) revert();
+       addressAPICheck = result;
+   }
+
+   function getAPICheck(string memory _location) public payable {
+       priceOfUrl = provable_getPrice("URL");
+       require (address(this).balance >= priceOfUrl,"please add some ETH to cover for the query fee");
+       string memory localTempStart = "json(https://api.data.amsterdam.nl/atlas/search/adres/?q=";
+       string memory localTempEnd = ").count_hits";
+       string memory localTemp = concatenate(localTempStart , _location,  localTempEnd);
+       provable_query("URL", localTemp);
+   }
+   
+   function concatenate(string memory a,string memory b,string memory c )public pure returns(string memory) {
+            return string(abi.encodePacked(a, b , c));
+        }
+
 
   //This function register a property for the sender.
   //Could add some authirization, who could register properties.

@@ -1,11 +1,15 @@
 // From web3examples github: https://github.com/web3examples/ethereum/blob/master/truffle_examples/TestnetDeploy/truffle-config.js
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret")
-    .toString().trim(); // contains mnemonic
-const infuraKey = fs.readFileSync(".infura")
-    .toString().trim(); // infura key
+//const fs = require('fs');
+//const mnemonic = fs.readFileSync(".secret")
+//    .toString().trim(); // contains mnemonic
+//const infuraKey = fs.readFileSync(".infura")
+//    .toString().trim(); // infura key
+
+const mnemonic = "early mutual inflict divide simple moon eternal consider moral adjust ketchup spy";
+					
+const infuraKey = "c94a7ff50fb248fe91b93eca4a395a8b";
 
 var adr;
 
