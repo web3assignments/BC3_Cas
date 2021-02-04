@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <title>PD11</title>
+    <script src="https://bundle.run/buffer@5.2.1"></script>
+    <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"></script>
+    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script src="index.js"></script>
+
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+</main>
+<div class="clearfix">
+    <div class="box">
+        <h3>Upload image</h3>
+<pre id="log"></pre>
+<form action="/">
+    <input type="file"  name="photo" id="photo">
+    <button type="button" class="btn btn-elegant" onclick="upload()">UploadImage</button>
+</form>
+</div>
+<div class="box">
+    <h3>Get image with IPFS Hash</h3>
+    <img id="myimage"></img>
+    <input id="hashImageId">
+    <button onclick="getImage()" class="bbtn btn-elegant">Get image</button>
+</div>
+</div>
+</div>
+</html>
