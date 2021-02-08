@@ -1,0 +1,136 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "b2f04a529c7b236f299089afde347b0a0b7d78b34a7d2c09f86f90830f73bee3": {
+      "address": "0x4Af4a89aa4bb6833C3A9E5BFC4D52350127DcC65",
+      "txHash": "0xb6399ac3fc174d9565ef9e6b3bf11e6937f77fbee50ed736ef2752b992a95fdc",
+      "layout": {
+        "storage": [
+          {
+            "contract": "usingProvable",
+            "label": "provable",
+            "type": "t_contract(ProvableI)578",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\provableAPI.sol:259"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "OAR",
+            "type": "t_contract(OracleAddrResolverI)584",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\provableAPI.sol:260"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_network_name",
+            "type": "t_string_storage",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\provableAPI.sol:273"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_randomDS_args",
+            "type": "t_mapping(t_bytes32,t_bytes32)",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\provableAPI.sol:280"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_randomDS_sessionKeysHashVerified",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\provableAPI.sol:281"
+          },
+          {
+            "contract": "PropertyContract",
+            "label": "addressAPICheck",
+            "type": "t_string_storage",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\PropertyContract.sol:18"
+          },
+          {
+            "contract": "PropertyContract",
+            "label": "priceOfUrl",
+            "type": "t_uint256",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\PropertyContract.sol:19"
+          },
+          {
+            "contract": "PropertyContract",
+            "label": "totalPropertyCounter",
+            "type": "t_uint256",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\PropertyContract.sol:33"
+          },
+          {
+            "contract": "PropertyContract",
+            "label": "ownerList",
+            "type": "t_array(t_address)dyn_storage",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\PropertyContract.sol:36"
+          },
+          {
+            "contract": "PropertyContract",
+            "label": "propertiesMapping",
+            "type": "t_mapping(t_address,t_array(t_struct(Property)52_storage)dyn_storage)",
+            "src": "..\\..\\..\\..\\..\\..\\..\\C\\Users\\Cas\\Documents\\GitHub\\BC3_Cas\\PD-09\\contracts\\PropertyContract.sol:43"
+          }
+        ],
+        "types": {
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_array(t_struct(Property)52_storage)dyn_storage)": {
+            "label": "mapping(address => struct PropertyContract.Property[])"
+          },
+          "t_array(t_struct(Property)52_storage)dyn_storage": {
+            "label": "struct PropertyContract.Property[]"
+          },
+          "t_struct(Property)52_storage": {
+            "label": "struct PropertyContract.Property",
+            "members": [
+              {
+                "label": "ownerAddress",
+                "type": "t_address"
+              },
+              {
+                "label": "ID",
+                "type": "t_uint256"
+              },
+              {
+                "label": "location",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "cost",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_contract(ProvableI)578": {
+            "label": "contract ProvableI"
+          },
+          "t_contract(OracleAddrResolverI)584": {
+            "label": "contract OracleAddrResolverI"
+          },
+          "t_mapping(t_bytes32,t_bytes32)": {
+            "label": "mapping(bytes32 => bytes32)"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0x92AeEaDB48F25707b8a4a93B229b7dD6B3D879eC",
+    "txHash": "0x39a5ae25000f916ac874f880a691a88b5c64dc76caaee68b6af261dac11dbbcc"
+  }
+}
