@@ -11,7 +11,7 @@ import "./provableAPI.sol";
 import "@openzeppelin/upgrades-core/contracts/Initializable.sol";
 
 
-contract PropertyContract is usingProvable
+contract PropertyContractV2 is usingProvable
 {
     
   //Provable variables
