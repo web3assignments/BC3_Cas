@@ -1,0 +1,60 @@
+// SPDX-License-Identifier: GPL-3.0
+    
+pragma solidity >=0.4.22 <0.9.0;
+pragma experimental ABIEncoderV2;
+import "remix_tests.sol"; // this import is automatically injected by Remix.
+import "remix_accounts.sol";
+import "../contracts/PropertyContract.sol";
+
+
+contract testSuite {
+    
+    PropertyContract PC;
+    address admin;
+    address buyer;
+
+    
+    function beforeEach() public {
+        PC = new PropertyContract();
+        admin = address(this);
+        buyer = address(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4); 
+        Assert.equal(PC.getTotalPropertyCount(), uint(0), "Number of registered properties in total should be 0 initially");
+    }
+
+    function registerPropertyTest() public {
+    
+        PC.registerProperty("Teststraat 92" , 1000);
+        Assert.equal(PC.getTotalPropertyCount(), uint(1), "Number of registered properties in total should be 1");
+    }
+    
+    function getNoOfPropertiesTest() public
+    {
+        
+        admin = address(this);
+        PC.registerProperty("Teststraat 92" , 1000);
+        Assert.equal(PC.getNoOfProperties(admin), uint(1), "Number of registered properties of this address should be 1");
+        
+        
+    }
+    
+    //Test if getProperties works correct,
+    function getPropertiesTest () public {
+        
+        PC.registerProperty("Teststraat 92" , 1000);
+        uint lengthTest = PC.getProperties().length;
+        Assert.equal(lengthTest, uint(1), "Number of registered properties of this address should be 1");
+        
+    }
+    
+
+    //Test if the trasnfer function works correct, only by the amount of properties not by the fields
+    function transferPropertyTest() public {
+        
+       PC.registerProperty("Teststraat 92" , 1000);
+       PC.transferProperty(buyer,uint(0));
+       Assert.equal(PC.getNoOfProperties(buyer), uint(1), "Number of registered properties of buyer should be 1");
+       Assert.equal(PC.getNoOfProperties(admin), uint(0), "Number of registered properties of admin should be 0");
+    }
+    
+    
+}
